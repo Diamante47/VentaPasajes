@@ -1,0 +1,37 @@
+{% extends "./plantilla.html" %}
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Generar Factura</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Selección de cliente -->
+        <div class="mb-3">
+            <label for="cliente">Cliente:</label>
+            <select name="cliente" id="cliente" class="form-control" required>
+                <option value="">Seleccione un cliente</option>
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">{{ cliente.nombre }} {{ cliente.apellido }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Selección de pasajes -->
+        <div class="mb-3">
+            <label for="pasajes">Pasajes:</label>
+            <select name="pasajes" id="pasajes" class="form-control" multiple required>
+                {% for pasaje in pasajes %}
+                <option value="{{ pasaje.id }}">
+                    {{ pasaje.cliente.nombre }} {{ pasaje.cliente.apellido }} - {{ pasaje.horario.ruta.origen }} -> {{ pasaje.horario.ruta.destino }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botones -->
+        <button type="submit" class="btn btn-success">Generar Factura</button>
+        <a href="{% url 'listadoPasajes' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

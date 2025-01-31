@@ -1,0 +1,36 @@
+{% extends "./plantilla.html" %}
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Detalle de Factura</h1>
+
+    <p><strong>ID:</strong> {{ factura.id }}</p>
+    <p><strong>Cliente:</strong> {{ factura.cliente.nombre }} {{ factura.cliente.apellido }}</p>
+    <p><strong>Fecha de Emisión:</strong> {{ factura.fecha_emision }}</p>
+    <p><strong>Total:</strong> S/ {{ factura.total }}</p>
+
+    <h3 class="mt-4">Pasajes</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Horario</th>
+                <th>Asientos</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pasaje in factura.pasajes.all %}
+            <tr>
+                <td>{{ pasaje.horario.ruta.origen }} -> {{ pasaje.horario.ruta.destino }}</td>
+                <td>{{ pasaje.asientos }}</td>
+                <td>{{ pasaje.cantidad }}</td>
+                <td>S/ {{ pasaje.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'descargarFactura' factura.id %}" class="btn btn-success">Descargar Factura</a>
+    
+    <a href="{% url 'listadoPasajes' %}" class="btn btn-primary">Volver al Listado</a>
+</div>
+{% endblock %}

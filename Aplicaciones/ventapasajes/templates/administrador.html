@@ -1,0 +1,64 @@
+{% extends "./plantillaAdministrador.html" %}
+{% block contenidoAdministrador %}
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <h1>Bienvenido al Panel del Administrador</h1>
+        <p>Selecciona una opción del menú para gestionar el sistema.</p>
+
+        <!-- Resumen General -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Pasajes Vendidos Hoy</div>
+                    <div class="card-body">
+                        <h5 class="card-title">50</h5>
+                        <p class="card-text">Cantidad de pasajes vendidos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Ingresos Totales Hoy</div>
+                    <div class="card-body">
+                        <h5 class="card-title">S/ 1,250.00</h5>
+                        <p class="card-text">Total generado por ventas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">Rutas Activas</div>
+                    <div class="card-body">
+                        <h5 class="card-title">5</h5>
+                        <p class="card-text">Cantidad de rutas activas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Tareas Pendientes -->
+        <h2 class="mt-4">Tareas Pendientes</h2>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Revisar buses disponibles
+                <span class="badge bg-primary rounded-pill">2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Actualizar horarios de rutas
+                <span class="badge bg-warning rounded-pill">1</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Supervisar ventas recientes
+                <span class="badge bg-success rounded-pill">8</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock%}
+
